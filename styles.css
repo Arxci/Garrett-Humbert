@@ -77,6 +77,7 @@ a {
 
 body {
     background-color: var(--background-dark);
+    overflow-x: hidden;
 }
 
 header {
@@ -304,6 +305,7 @@ header {
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
 }
 
 .about-content {
@@ -521,6 +523,17 @@ header {
     font-size: 6rem;
     color: var(--secondary);
     margin-bottom: 2rem;
+    position: relative;
+}
+
+.portfolio-title::before {
+    position: absolute;
+    content: '';
+    width: 80rem;
+    height: 2.5rem;
+    background-color: var(--secondary);
+    left: -60rem;
+    top: -5rem;
 }
 
 .card {
@@ -528,18 +541,16 @@ header {
     display: flex;
     width: 250px;
     height: 500px;
-    transition: 0.5s;
+    transition: 0.5s ease-in-out;
     background-color: var(--background-light);
     border-radius: 0.5rem;
 }
 
 .card:hover {
-    transform: scale(1.1);
-    box-shadow: 5px 5px rgba(255, 0, 0, 1),
-    10px 10px rgba(255, 0, 0, 0.6),
-    15px 15px rgba(255, 0, 0, 0.4),
-    20px 20px rgba(255, 0, 0, 00);
+    transform: scale(1.15);
+    outline: 2px solid var(--secondary);
     z-index: 1;
+    margin-inline: 4rem;
 }
 
 .card-content {
@@ -584,6 +595,182 @@ header {
 .contact {
     height: 100vh;
     border-top: 5px var(--secondary) solid;
+    position: relative;
+    color: var(--text-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.contact::after {
+    width: 100%;
+    content: '';
+    background-color: var(--grey);
+    height: 100%;
+    position: absolute;
+    transform: rotate(-45deg);
+    right: -100rem;
+    bottom: -50rem;
+    z-index: -999;
+}
+
+.contact-container {
+    max-width: 150rem;
+    width: 100%;
+    height: 60rem;
+}
+
+.contact-content {
+    border: 5px solid var(--secondary);
+    padding: 2rem 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-title {
+    margin-bottom: 2rem;
+    font-size: 3rem;
+}
+
+.contact-details {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+.contact-form {
+    flex: 1;
+    border: 5px solid var(--background-light);
+}
+
+.contact-form-content {
+    padding: 2rem 2rem;
+    height: 100%;
+}
+
+.inputBox {
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.inputBox input[type=text] {
+    flex: 1;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid var(--secondary);
+    color: var(--text-grey);
+    transition: background-color 500ms ease;
+    font-size: 1.5rem;
+}
+
+input[type=submit] {
+    width: 5rem;
+    font-size: 2rem;
+    padding: 0.5rem 5rem;
+    display: flex;
+    justify-content: center;
+    background-color: var(--secondary);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: transform 500ms ease;
+    color: var(--text-light)
+}
+
+input[type=submit]:hover {
+    transform: scale(1.05);
+}
+
+.inputBox input[type=text]:focus {
+    background-color: var(--background-light);
+}
+
+.inputBox textarea {
+    resize: none;
+    width: 100%;
+    height: 15rem;
+    background-color: transparent;
+    color: var(--text-grey);
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid var(--secondary);
+    transition: background-color 500ms ease;
+}
+
+.inputBox textarea:focus {
+    background-color: var(--background-light);
+}
+
+.inputBox span {
+    flex: .2;
+    font-size: 1.5rem;
+    color: var(--text-grey)
+}
+
+.contact-info {
+    flex: .4;
+    border: 5px solid var(--secondary);
+    background-color: var(--grey);
+    padding: 2rem 2rem;
+}
+
+.content-info-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: var(--secondary)
+}
+
+.contact-ep {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4rem 0;
+    width: 100%;
+}
+
+.contact-ep-info {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-ep-info p {
+    margin-left: 2rem;
+    font-size: 1.5rem;
+}
+
+.contact-ep-info i {
+    font-size: 2.5rem;
+    color: var(--secondary);
+}
+
+.contact img {
+    position: absolute;
+    left: -80rem;
+    z-index: -999;
+}
+
+.contact-socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-socials i {
+    color: var(--background-light);
+}
+
+.contact-socials .social-icon {
+    margin-inline: 2rem;
 }
 
 @keyframes arrow-fade {
@@ -644,8 +831,8 @@ header {
 
 @media (max-width: 480px) {
     .portfolio-container {
-        grid-template-columns: 1fr 1fr 1fr;
-       grid-template-rows: 1fr 1fr 1fr;
+       display: flex;
+       flex-direction: column;
     }
 
     .card {
