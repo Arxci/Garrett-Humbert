@@ -5,7 +5,6 @@
     --text-light: #ffffff;
     --text-grey: #b8b8b8;
     --grey: #2e2e2e;
-    --header-color: rgba(0,0,0,.5);
     --scrollbar-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -28,6 +27,7 @@
     width: 10px;
     height: 100%;
     background-color: var(--scrollbar-color);
+    border-radius: 20rem;
     z-index: 999999;
 }
 
@@ -39,7 +39,7 @@
     height: 0%;
     background-color: var(--secondary);
     z-index: 9999999;
-    border-radius: 10rem;
+    border-radius: 20rem;
     transition: height 100ms ease;
 }
 
@@ -52,6 +52,7 @@
     height: 100%;
     background-color: var(--secondary);
     filter: blur(30px);
+    border-radius: 20rem;
 }
 
 .progressbar::after {
@@ -63,6 +64,7 @@
     height: 100%;
     background-color: var(--secondary);
     filter: blur(30px);
+    border-radius: 20rem;
 }
 
 html {
@@ -261,8 +263,7 @@ header {
 
 .icon:hover i {
     transform: scale(1.1);
-    border: solid var(--secondary) 2px;
-    border-radius: 50%;
+    color: var(--secondary)
 }
 
 .icon i {
@@ -272,7 +273,7 @@ header {
     width: 6rem;
     height: 6rem;
     margin: auto;
-    transition: transform 500ms ease, border 250ms ease;
+    transition: transform 500ms ease, color 500ms ease;
 }
 
 .transition {
@@ -280,7 +281,7 @@ header {
     bottom: 10rem;
     font-size: 3rem;
     opacity: 1;
-    animation: arrow-fade 1500ms infinite alternate;
+    animation: arrow-fade 1500ms ease-in-out infinite alternate;
     color: var(--text-light);
     display: flex;
     flex-direction: column;
@@ -290,21 +291,300 @@ header {
 
 .transition h1 {
     font-size: 3rem;
-    animation: blink 750ms infinite alternate;
+    animation: blink 750ms ease-in-out infinite alternate;
     opacity: 0;
     color: var(--secondary)
 }
 
 .about {
     height: 100vh;
+    border-top: 5px var(--secondary) solid;
+    color: var(--text-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.about-content {
+    max-width: 150rem;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 0 8rem;
+}
+
+.about-content::before {
+    content: '';
+    position: absolute;
+    background-color: var(--grey);
+    height: 100vh;
+    width: 50rem;
+    z-index: -2;
+    top: 0;
+    left: 0;
+}
+
+.about-content::after {
+    content: '';
+    position: absolute;
+    background-color: var(--secondary);
+    height: 5rem;
+    width: 60rem;
+    z-index: -1;
+    bottom: 10rem;
+    left: -20rem;
+}
+
+.about-content-container {
+    margin-top: -10rem;
+    width: 150rem;
+    height: 60rem;
+    padding: 0 4rem;
+    border: 5px solid var(--background-light);
+    position: relative;
+}
+
+.about-content-container::after {
+    content: '';
+    position: absolute;
+    background-color: var(--secondary);
+    height: 5rem;
+    width: 134rem;
+    z-index: -1;
+    top: -10rem;
+    left: -0.5rem;
+}
+
+.about-title h1 {
+    font-size: 8rem;
+    color: var(--secondary)
+}
+
+.about-info-content {
+    height: 100%;
+    display: flex;
+    gap: 20px;
+    border: 5px solid var(--secondary)
+}
+
+.about-info-text {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.about-info-text p {
+    font-size: 2.5rem;
+    line-height: 1.5;
+    margin: 0 2rem;
+    color: var(--text-grey);
+}
+
+.buttons {
+    margin: 2rem 0;
+}
+
+.about-btn {
+    margin: 0 2rem;
+    border: none;
+    background-color: var(--secondary);
+    padding: 1rem 1rem;
+    font-size: 2rem;
+    width: 20rem;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: transform 500ms ease;
+}
+
+.about-btn:hover {
+    transform: scale(1.05);
+}
+
+.about-info-skills {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: .5;
+}
+
+.skills-title {
+    margin-top: 2rem;
+    margin-bottom: 10rem;
+}
+
+.skills-title h2 {
+    font-size: 4rem;
+    color: var(--secondary)
+}
+
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    font-size: 6rem;
+    grid-gap: 40px;
+    color: var(--background-light);
+}
+
+.skills i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 500ms ease, transform 500ms ease;
+}
+
+.skills i:hover {
+    transform: scale(1.1);
+    color: var(--secondary)
+}
+
+.about-background-image {
+    position: absolute;
+    z-index: -3;
+    bottom: -30rem;
+    right: -90rem;
 }
 
 .portfolio {
+    border-top: 5px var(--secondary) solid;
     height: 100vh;
+    color: var(--text-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-background-img {
+    position: absolute;
+    z-index: -2;
+    left: 0;
+}
+
+.portfolio::before {
+    content: '';
+    background-color: var(--secondary);
+    width: 5rem;
+    position: absolute;
+    height: 65rem;
+    z-index: 0;
+    bottom: 25rem;
+    right: 30rem;
+}
+
+.portfolio::after {
+    content: '';
+    background-color: var(--grey);
+    width: 100vw;
+    position: absolute;
+    height: 20rem;
+    z-index: -1;
+    bottom: 35rem;
+}
+
+.portfolio-content {
+    max-width: 150rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+}
+
+.portfolio-container {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.portfolio-title {
+    font-size: 6rem;
+    color: var(--secondary);
+    margin-bottom: 2rem;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    width: 250px;
+    height: 500px;
+    transition: 0.5s;
+    background-color: var(--background-light);
+    border-radius: 0.5rem;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 5px 5px rgba(255, 0, 0, 1),
+    10px 10px rgba(255, 0, 0, 0.6),
+    15px 15px rgba(255, 0, 0, 0.4),
+    20px 20px rgba(255, 0, 0, 00);
+    z-index: 1;
+}
+
+.card-content {
+    padding: 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--background-dark)
+}
+
+.card-description {
+    font-size: 1.5rem;
+    flex: 1;
+    color: var(--grey);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttons a button {
+    background-color: var(--secondary);
+    border: none;
+    font-size: 2rem;
+    padding: 1rem 1rem;
+    cursor: pointer;
+    transition: transform 500ms ease;
+    color: var(--text-light);
+}
+
+.buttons a button:hover {
+    transform: scale(1.1);
 }
 
 .contact {
     height: 100vh;
+    border-top: 5px var(--secondary) solid;
 }
 
 @keyframes arrow-fade {
@@ -322,5 +602,57 @@ header {
     }
     to {
         opacity: 1;
+    }
+}
+
+@media (max-width: 1200px) {
+    .portfolio-container {
+       width: 100%;
+       height: auto;
+       padding: 20px; 
+    }
+
+    .portfolio {
+        height: auto;
+    }
+
+    .box {
+        height: 250px;
+    }
+
+    .thumb {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+    }
+
+    .box {
+        width: 100%;
+        float: left;
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-container {
+        top: 0;
+        left: 0;
+        transform: translate(0);
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+    }
+
+    .box {
+        width: 100%;
+        float: none;
+        height: 250px;
     }
 }
